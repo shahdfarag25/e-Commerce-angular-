@@ -1,0 +1,50 @@
+<p>categories works!</p>
+<h2 class="text-green-600 my-3 p-4 py-5 text-center text-4xl font-semibold">
+    All Categories
+</h2>
+<div class="parent w-9/12 mx-auto pt-2 mx-2 my-3 grid gap-5 md:gap-4 grid-cols-2 md:grid-cols-3">
+    @for (oneCategory of allCategories() ; track oneCategory._id) {
+    <div (click)="subCategory(oneCategory._id)"
+        class="group bg-white border border-green-100 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 hover:border-green-500 hover:border-3 
+                hover:shadow hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-400 ease-in">
+        <div class="cursor-pointer">
+            <a>
+                <img class="w-full h-75 object-cover rounded-lg" [src]="oneCategory.image" alt={{oneCategory.name}} />
+            </a>
+            <div class="px-5 pb-5">
+                <a>
+                    <h5
+                        class="text-3xl text-center my-4 font-semibold tracking-tight text-green-700 dark:text-green-700">
+                        {{oneCategory.name}}
+                    </h5>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    }
+</div>
+
+<div class="parent w-9/12 mx-auto pt-2 mx-2 my-3 ">
+    <div class="mx-auto ">
+        <h2 class="text-green-500 my-3 mx-auto p-4 py-5 text-center text-4xl font-semibold">
+            {{categName()}} Subcategories
+        </h2>
+    </div>
+    <div class="grid gap-5 md:gap-4 grid-cols-2 md:grid-cols-3">
+        @for (item of Subcatg() ; track item._id) {
+
+        <div
+            class=" group bg-white border border-green-100 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 hover:border-green-500 hover:border-3 
+                    hover:shadow hover:scale-105 hover:shadow-lg transition-transform transition-shadow duration-400 ease-in">
+            <div class="cursor-pointer flex justify-center items-center px-5 p-5">
+                <h5 class="text-xl text-center my-4 font-semibold tracking-tight text-black dark:text-green-700">
+                    {{item.name}}
+                </h5>
+            </div>
+        </div>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,66 @@
+<div class="w-9/12 mx-auto py-5">
+    <form [formGroup]="addressForm">
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-700 dark:text-white">Address in Details :</label>
+            <input formControlName="details" type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+
+            @if (addressForm.get('details')?.errors && addressForm.get('details')?.touched )
+            {
+            @if (addressForm.get('details')?.errors?.['required'])
+            {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="font-medium">Required</span>
+            </div>
+            }
+            }
+        </div>
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-700 dark:text-white">phone number :</label>
+            <input formControlName="phone" type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+
+            @if (addressForm.get('phone')?.errors && addressForm.get('phone')?.touched )
+            {
+            @if (addressForm.get('phone')?.errors?.['required'])
+            {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="font-medium">Required</span>
+            </div>
+            }@else if (addressForm.get('phone')?.errors?.['pattern'])
+            {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="font-medium">Please enter a vaild phone number</span>
+            </div>
+            }
+            }
+        </div>
+        <div class="mb-3">
+            <label class="block mb-2 text-sm font-medium text-green-700 dark:text-white">City :</label>
+            <input formControlName="city" type="text"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" />
+            @if (addressForm.get('city')?.errors && addressForm.get('city')?.touched )
+            {
+            @if (addressForm.get('city')?.errors?.['required'])
+            {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                <span class="font-medium">Required</span>
+            </div>
+            }
+            }
+        </div>
+
+        <div class="py-4 flex justify-center">
+            <button type="button" (click)="cashPay()" class="p-3 ms-3 rounded text-white bg-green-600 cursor-pointer  ">
+                Cash payment
+            </button>
+            <button type="button" (click)="CardPay()" class="p-3 ms-3 rounded text-white bg-green-600 cursor-pointer  ">
+                Card payment
+            </button>
+        </div>
+    </form>
+</div>

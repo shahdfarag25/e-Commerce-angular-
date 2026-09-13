@@ -1,0 +1,48 @@
+@for (oneOrder of allOrders().slice().reverse() ; track oneOrder._id) {
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="flex justify-center mx-auto w-9/12">
+        <h3 class="text-green-600 my-3 p-4 text-center text-2xl font-semibold ">Created At : {{oneOrder.createdAt
+            |date:'medium'}}
+        </h3>
+        <h3 class="text-green-600 my-3 p-4 text-center text-2xl font-semibold ">Total Price :
+            {{oneOrder.totalOrderPrice}}
+        </h3>
+        <h3 class="text-green-600 my-3 p-4 text-center text-2xl font-semibold ">Payment Method :
+            {{oneOrder.paymentMethodType}}
+        </h3>
+    </div>
+
+    <table class="w-9/12 my-3 mx-auto text-sm text-left rtl:text-right text-green-100 dark:text-green-100">
+        <thead class="text-xs text-black uppercase bg-green-700 dark:text-white">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Product Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Count
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of oneOrder.cartItems; track item._id) {
+            <tr class="bg-green-500 border-b border-green-300">
+                <th scope="row" class="px-6 py-4 font-xl text-green-50 whitespace-normal dark:text-green-100">
+                    {{item.product.title}}
+                </th>
+                <td class="px-6 py-4">
+                    {{item.price}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.count}}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+}
